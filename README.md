@@ -2,6 +2,8 @@
 
 **NOTE: the software has a pure educational purpose**
 
+**Contributors: di Girolamo Luigi (luispdm), Siino Alessandro (alessandroesse).**
+
 ## Description
 
 Project developed for the **Concurrent Programming** (**Programmazione di Sistema**) course at the **Politecnico di Torino** in the 2013/2014.
