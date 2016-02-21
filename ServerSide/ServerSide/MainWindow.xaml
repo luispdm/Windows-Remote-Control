@@ -1,0 +1,54 @@
+﻿<Controls:MetroWindow x:Class="ServerSide.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        Title="ServerSide" Height="350" Width="525" StateChanged="MetroWindow_StateChanged" ResizeMode="CanResizeWithGrip" Closing="Window_Closed">
+
+    <Window.Resources>
+
+        <tb:TaskbarIcon
+              x:Key="TbIcon"
+              ToolTipText="ServerSide"
+              MenuActivation="LeftOrRightClick">
+            <tb:TaskbarIcon.ContextMenu>
+                <ContextMenu Background="White">
+                    <MenuItem Header="Apri" Click="MenuItem_Foreground"/>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="212*"/>
+            <RowDefinition Height="107*"/>
+        </Grid.RowDefinitions>
+        <PasswordBox ToolTip="inserisci una password di almeno due caratteri" TabIndex="2" Name="mypwIns" HorizontalAlignment="Left" Margin="76,41,0,0" VerticalAlignment="Top" Width="75" Height="20"/>
+        <Button ToolTip="renditi visibile dal pc attivo" TabIndex="4" Content="SET" HorizontalAlignment="Left" Margin="76,102,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="25"/>
+        <TextBox TabIndex="3" Name="myprIde" HorizontalAlignment="Left" Height="20" Margin="76,71,0,0" TextWrapping="Wrap" Text="13006" VerticalAlignment="Top" Width="46"/>
+        <TextBlock HorizontalAlignment="Left" Margin="22,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="it-it" Text="Indirizzo"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="17,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="it-it" Text="Password"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="39,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="1.685,0.595"><Run Language="it-it" Text="Porta"/></TextBlock>
+        <Button ToolTip="Riconnetti Clipboard" Content="Interrompi" HorizontalAlignment="Left" Margin="76,162,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <TextBlock Name="mtblk" HorizontalAlignment="Left" Margin="189,36,0,0" VerticalAlignment="Top" Height="16" Width="82" Grid.Row="1"/>
+        <ComboBox ToolTip="seleziona un indirizzo di collegamento alla rete, poi copialo nel pc attivo da cui vuoi controllare" TabIndex="1" Name="listenintf" HorizontalAlignment="Left" Margin="76,12,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button  ToolTip="Aggiorna Interfacce" HorizontalAlignment="Left" Margin="203,12,0,0" VerticalAlignment="Top" Width="32" Height="26" Click="Button_Click_2">
+            <DockPanel>
+                <Image Source="Resources/refresh.ico"></Image>
+            </DockPanel>
+        </Button>
+        <Button ToolTip="Riconnetti Clipboard" HorizontalAlignment="Left" Margin="189,151,0,0" VerticalAlignment="Top" Width="46" Click="Button_Click_3" Height="36">
+            <DockPanel>
+                <Image Source="Resources/clipboard.png"></Image>
+            </DockPanel>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="77,36,0,0" TextWrapping="Wrap" Text="Stato periferiche:" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="77,57,0,0" TextWrapping="Wrap" Text="Stato clipboard:" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBlock Name="tblk_clip" Text="{Binding Status}"  HorizontalAlignment="Left" Margin="189,57,0,0" VerticalAlignment="Top" Height="16" Width="82" Grid.Row="1"/>
+    </Grid>
+</Controls:MetroWindow>

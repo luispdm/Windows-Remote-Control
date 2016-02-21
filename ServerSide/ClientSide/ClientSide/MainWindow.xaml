@@ -1,0 +1,75 @@
+﻿<Controls:MetroWindow x:Class="ClientSide.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      
+        Title="ClientSide" Height="637" Width="1400" PreviewMouseDown="PrMouseDown" PreviewMouseUp="PrMouseUp" PreviewMouseLeftButtonUp="PrMouseLeftBtUp" PreviewMouseRightButtonDown="PrMouseRightBtDown" PreviewMouseRightButtonUp="PrMouseRightBtUp" PreviewKeyDown="OnPreKeyDown" PreviewKeyUp="OnPreKeyUp" Closing="Window_Closing" ResizeMode="CanMinimize" IgnoreTaskbarOnMaximize="True" PreviewMouseWheel="PrMouseWheel">
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Click="Button_Click_6">
+                <DockPanel>
+                    <Image Source="Resources/full-screen-inv.png" Opacity="0.8"/>
+                </DockPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Window.Resources>
+        <Style TargetType="{x:Type ListView}">
+        </Style>
+    </Window.Resources>
+
+    <Grid HorizontalAlignment="Center" Margin="10,0,4,-19" Width="1111">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="44*"/>
+            <ColumnDefinition Width="157*"/>
+            <ColumnDefinition Width="258"/>
+            <ColumnDefinition Width="451"/>
+            <ColumnDefinition Width="0"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="143*"/>
+            <RowDefinition Height="58*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <TextBox FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  FontStyle="Italic"  ToolTip="inserisci l'indirizzo impostato sul pc passivo da controllare" TabIndex="1"  Controls:TextBoxHelper.ClearTextButton="True"  HorizontalAlignment="Center" Height="47" Margin="32,71,428,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="249" Name="mytb" Grid.Column="3" Grid.ColumnSpan="2" />
+        <Button  FontSize="18" VerticalContentAlignment="Center"  TabIndex="4" Content="Connect" HorizontalAlignment="Center" Margin="71,286,25,0" VerticalAlignment="Top" Width="162" Click="Button_Click" Height="39" Grid.Column="3"/>
+        <TextBox  FontSize="22"  TextAlignment="Center" VerticalContentAlignment="Center"   ToolTip="inserisci la porta impostata sul pc passivo da controllare" TabIndex="3" x:Name="defa" HorizontalAlignment="Center" Height="47" Margin="89,212,39,0" TextWrapping="Wrap" Text="13006" VerticalAlignment="Top" Width="130" Grid.Column="3"/>
+        <PasswordBox  VerticalContentAlignment="Center"  FontSize="22" HorizontalContentAlignment="Center"  TabIndex="2" HorizontalAlignment="Center" Margin="32,144,428,0" VerticalAlignment="Top" Height="49" Width="249" Name="mypw" Grid.Column="3" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="226,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontStyle="Italic" Height="30" Width="51" Grid.Column="2"><Run Language="it-it" Text="Indirizzo"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="245,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontStyle="Italic" Height="29" Width="32" Grid.Column="2"><Run Language="it-it" Text="Porta"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="226,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontStyle="Italic" Height="30" Width="51" Grid.Column="2"><Run Language="it-it" Text="Password"/></TextBlock>
+        <Button Content="Chiudi Tutti" Click="Button_Click_1" HorizontalAlignment="Left" Margin="149,139,0,0" VerticalAlignment="Top" Width="96" Grid.Column="3" Height="29" Grid.Row="1"/>
+        <Button Content="Disconnetti" ToolTip="Disconnetti il Server selezionato" HorizontalAlignment="Left" Margin="153,42,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_2" Grid.Column="3" Height="28" Grid.Row="1"/>
+        <Button Content="Passa a" ToolTip="Passa al server selezionato" HorizontalAlignment="Left" Margin="153,7,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_4" Grid.Column="3" Height="29" Grid.Row="1"/>
+
+        <ListView Name="lVconn" HorizontalAlignment="Center" Height="164" Margin="32,5,128,0" VerticalAlignment="Top" Width="500" ItemsSource="{Binding}" SelectionMode="Single" SelectionChanged="lVconn_SelectionChanged"  MouseDoubleClick="lV_dbclic" Grid.ColumnSpan="4" Grid.Row="1">
+
+            <ListView.View>
+                <GridView>
+
+                    <GridView.Columns>
+
+                        <GridViewColumn Header="IP" DisplayMemberBinding="{Binding ip}"  Width="200"></GridViewColumn>
+                        <GridViewColumn Header="stato" DisplayMemberBinding="{Binding status}" Width="200"></GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ComboBox Name="toto" HorizontalAlignment="Left" Margin="166,44,0,0" VerticalAlignment="Top" Width="165" SelectionChanged="toto_SelectionChanged" Height="26" Grid.Column="4" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="166,24,0,0" TextWrapping="Wrap" Text="Interfaccia di ascolto clipboard:" VerticalAlignment="Top" Height="16" Width="165" Grid.Column="4" Grid.Row="1"/>
+        <Button Content="Cambia" HorizontalAlignment="Left" Margin="166,87,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3" Height="25" Grid.Column="4" Grid.Row="1"/>
+        <Button ToolTip="Aggiorna interfaccia" HorizontalAlignment="Left" Margin="336,44,0,0" VerticalAlignment="Top" Width="40" Click="Button_Click_5" Height="26" Grid.Column="4" Grid.Row="1">
+            <DockPanel>
+                <Image Source="Resources/refresh.ico"/>
+            </DockPanel>
+        </Button>
+        <Image Grid.Column="4" HorizontalAlignment="Left" Height="363" Margin="83,40,-75,0" Opacity="0.3" Source="Resources/sf2.png" VerticalAlignment="Top" Width="443" Grid.ColumnSpan="2"/>
+        <Button Content="?" HorizontalAlignment="Left" Margin="-59,76,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Info" ToolTip="Istruzioni sugli Hotkeys" Grid.ColumnSpan="2"/>
+        <TextBlock Name="TBlockInfo" HorizontalAlignment="Left" Margin="-59,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="262" Height="204" Grid.ColumnSpan="3" ToolTip="Istruzioni sugli Hotkeys"/>
+
+
+    </Grid>
+
+</Controls:MetroWindow>
