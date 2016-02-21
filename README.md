@@ -12,7 +12,7 @@ The application is a _Client-Server_ like. It is possible to share three resourc
 
 Resources sharing is possible _one at time_, so a _Thread synchronization_ mechanism was necessary.
 
-The Server needs to be installed on the machine that _receives_ the input; while the Client, the one who takes control, could be installed over different computers. Once the server is installed, you need to type in **IP address, port and password** to start listening. If the client wants to control that server, the credentials need to match.
+The Server needs to be installed on the machine that _receives_ the input (could be more than one); while the Client, is the one who takes control of the resources. Once the server is installed, you need to type in **IP address, port and password** to start listening. If the client wants to control that server, the credentials need to match.
 
 Once the connection is estabilished, the server window automatically goes into try icon and the user can realize he's been controlled thanks to a thin red square wrapping the display.
 
